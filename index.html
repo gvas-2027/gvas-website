@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="GVAS — Global Visa Application Support. Personalised guidance for your visa application journey." name="description"/>
+<meta content="#071b38" name="theme-color"/>
+<title>GVAS | Global Visa Application Support</title>
+<style>
+    :root{
+      --navy:#071b38; --navy2:#0d2b53; --blue:#0799df; --sky:#eaf6fc;
+      --red:#d92736; --gold:#c9a86a; --ink:#14243a; --muted:#65758b;
+      --paper:#ffffff; --line:#e6edf4; --soft:#f5f8fb;
+      --shadow:0 18px 55px rgba(7,27,56,.10); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(1160px,calc(100% - 44px));margin:auto}
+    .topbar{background:var(--navy);color:#dbe7f5;font-size:12px;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(230,237,244,.85)}
+    .nav{height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;min-width:175px}
+    .brand img{display:block;width:250px;height:auto;max-height:76px;object-fit:contain}
+    .navlinks{display:flex;align-items:center;gap:29px;font-size:14px;font-weight:650;color:#33445a}
+    .navlinks a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 21px;font-weight:750;font-size:14px;cursor:pointer;transition:.2s ease}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .btn-primary{background:var(--red);color:white;box-shadow:0 8px 20px rgba(217,39,54,.18)}
+    .btn-dark{background:var(--navy);color:white}
+    .btn-outline{border:1px solid #cbd8e5;color:var(--navy);background:white}
+    .menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--navy);cursor:pointer}
+    .hero{background:linear-gradient(110deg,#071b38 0%,#0b2a50 53%,#123c69 100%);color:#fff;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;width:560px;height:560px;border:1px solid rgba(255,255,255,.10);border-radius:50%;right:-130px;top:-210px;box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 90px rgba(255,255,255,.02)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:52px;padding:76px 0 82px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#a9dcf7;text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}
+    .eyebrow:before{content:"";width:28px;height:2px;background:var(--red)}
+    h1{font-size:clamp(42px,5.2vw,67px);line-height:1.04;letter-spacing:-.045em;margin:20px 0 20px;max-width:650px}
+    h1 span{color:#74cafa}
+    .hero-copy{font-size:17px;line-height:1.75;color:#d3dfed;max-width:560px;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero .btn-outline{background:transparent;color:white;border-color:rgba(255,255,255,.38)}
+    .trustline{display:flex;align-items:center;gap:18px;margin-top:34px;color:#b7c8dc;font-size:12px;flex-wrap:wrap}
+    .trustline span{display:flex;align-items:center;gap:7px}
+    .check{color:#77d4ad;font-weight:900}
+    .hero-visual{position:relative;min-height:430px;display:flex;align-items:center;justify-content:center}
+    .photo-frame{position:absolute;inset:15px 0 15px 20px;border-radius:30px;overflow:hidden;background:#dcebf4;box-shadow:0 28px 70px rgba(0,0,0,.28)}
+    .photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(3,20,42,.58))}
+    .floating-card{position:absolute;z-index:2;left:24px;bottom:30px;display:flex;align-items:center;gap:12px;background:white;color:var(--ink);padding:12px 17px;border-radius:16px;box-shadow:var(--shadow);width:330px;max-width:calc(100% - 48px)}
+    .floating-copy{display:block;min-width:0}
+    .floating-card strong{display:block;font-size:14px;line-height:1.3}
+    .floating-card small{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.35}
+    .floating-icon{display:inline-grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:#eaf6fc;color:#087ebc;margin:0}
+    .hero-stamp{position:absolute;z-index:2;right:-12px;top:0;background:rgba(255,255,255,.95);color:var(--navy);border-radius:50%;width:104px;height:104px;display:grid;place-items:center;text-align:center;font-size:11px;font-weight:850;line-height:1.3;box-shadow:var(--shadow);border:1px solid #dbe7f0}
+    .hero-stamp b{font-size:22px;color:var(--blue);display:block}
+    .quickbar{position:relative;margin-top:-28px;z-index:3}
+    .quickbar-inner{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:19px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .quick-item{display:flex;align-items:center;gap:13px;padding:5px 12px}
+    .quick-item+.quick-item{border-left:1px solid var(--line)}
+    .quick-icon{width:42px;height:42px;border-radius:13px;background:#edf7fc;display:grid;place-items:center;color:#078aca;font-size:20px;flex:none}
+    .quick-item strong{display:block;font-size:13px}
+    .quick-item small{display:block;color:var(--muted);font-size:11px}
+    section{padding:88px 0}
+    .section-head{text-align:center;max-width:660px;margin:0 auto 42px}
+    .section-kicker{color:#0a91ce;text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:850}
+    h2{font-size:clamp(30px,3.6vw,43px);line-height:1.12;letter-spacing:-.035em;color:var(--navy);margin:12px 0}
+    .section-head p{color:var(--muted);margin:0;font-size:15px}
+    .destinations{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .destination{position:relative;border-radius:18px;overflow:hidden;min-height:260px;background:#dce7ef;box-shadow:0 10px 28px rgba(7,27,56,.08)}
+    .destination img{position:absolute;width:100%;height:100%;object-fit:cover;transition:transform .55s}
+    .destination:hover img{transform:scale(1.06)}
+    .destination:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(4,20,40,.82))}
+    .destination-label{position:absolute;z-index:1;left:20px;right:18px;bottom:18px;color:white}
+    .destination-label strong{font-size:20px;display:block}
+    .destination-label small{color:#dbe7f5;font-size:12px}
+    .services{background:var(--soft)}
+    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .service-card{background:white;border:1px solid var(--line);border-radius:18px;padding:25px 22px;transition:.22s}
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c8e7f7}
+    .service-icon{width:48px;height:48px;border-radius:15px;background:#eaf6fc;color:#078aca;display:grid;place-items:center;font-size:22px;margin-bottom:19px}
+    .service-card h3{font-size:17px;color:var(--navy);margin:0 0 8px}
+    .service-card p{font-size:13px;color:var(--muted);margin:0}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:step}
+    .process-card{position:relative;padding:26px 25px;border:1px solid var(--line);border-radius:18px}
+    .process-number{font-size:38px;line-height:1;color:#c9a86a;font-weight:850;letter-spacing:-.06em}
+    .process-card h3{font-size:18px;color:var(--navy);margin:18px 0 7px}
+    .process-card p{font-size:13px;color:var(--muted);margin:0}
+    .why{background:var(--navy);color:white;overflow:hidden;position:relative}
+    .why-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center}
+    .why h2{color:white;font-size:clamp(34px,4.2vw,52px);line-height:1.08;max-width:620px;text-wrap:balance}.why .eyebrow{font-size:12px}.why-copy{font-size:16px}
+    .why-copy{color:#c8d6e6;font-size:15px;line-height:1.8}
+    .why-points{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .why-point{padding:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:15px}
+    .why-point b{display:block;color:#fff;font-size:14px;margin:8px 0 4px}
+    .why-point span{color:#c1d0e1;font-size:12px}
+    .why-point i{font-style:normal;color:#79d0fa;font-size:22px}
+    .contact{background:#f5f8fb}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:start}
+    .contact-panel{background:var(--navy);color:white;border-radius:22px;padding:32px;min-height:100%}
+    .contact-panel h2{color:white;font-size:32px}
+    .contact-panel p{color:#c8d6e6;font-size:14px}
+    .contact-detail{display:flex;gap:12px;align-items:center;margin-top:24px;color:#e4edf7;font-size:13px}
+    .contact-detail span{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#7bd0f5}
+    .form-card{background:white;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 12px 35px rgba(7,27,56,.06)}
+    .form-card h3{margin:0 0 5px;color:var(--navy);font-size:22px}
+    .form-card>p{margin:0 0 23px;color:var(--muted);font-size:13px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    label{display:block;font-size:12px;font-weight:750;color:#33445a;margin-bottom:7px}
+    input,select,textarea{width:100%;border:1px solid #dce5ed;border-radius:11px;padding:12px 13px;color:var(--ink);background:#fff;outline:none;font-size:13px}
+    input:focus,select:focus,textarea:focus{border-color:#5bbbe8;box-shadow:0 0 0 3px rgba(7,153,223,.1)}
+    textarea{min-height:105px;resize:vertical}
+    .full{grid-column:1/-1}
+    .form-note{font-size:11px;color:#7a899b;margin-top:12px}
+    footer{background:#041329;color:#c5d3e3;padding:38px 0 22px}
+    .footer-top{display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap;padding-bottom:25px;border-bottom:1px solid rgba(255,255,255,.12)}
+    .footer-brand{display:flex;align-items:center;gap:14px}
+    .footer-brand img{width:170px;background:white;border-radius:8px;padding:4px}
+    .footer-brand small{display:block;color:#9fb0c5;font-size:11px}
+    .footer-links a:hover{text-decoration:underline;color:#fff}
+    .destination-label{padding:9px 13px;border-radius:12px;background:rgba(4,19,41,.72);backdrop-filter:blur(8px)}
+    .destination-label strong{font-size:19px}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap;font-size:12px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;font-size:11px;color:#91a3b9}
+    .mobile-cta{display:none}
+    @media(max-width:900px){
+      .hero-grid{gap:30px;grid-template-columns:1fr 1fr}.hero-visual{min-height:360px}
+      .destinations,.service-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid{gap:30px}
+    }
+    @media(max-width:680px){
+      .container{width:min(100% - 32px,540px)}
+      .topbar .container{justify-content:center}
+      .nav{height:78px}.brand img{width:205px;max-height:66px}
+      .menu-btn{display:block}.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:20px 24px 24px;box-shadow:0 18px 25px rgba(7,27,56,.1);flex-direction:column;align-items:stretch;gap:17px}
+      .navlinks.open{display:flex}.navlinks .btn{width:100%}
+      .hero-grid{display:block;padding:56px 0 66px}
+      h1{font-size:44px}.hero-copy{font-size:15px}
+      .hero-visual{margin:35px 0 0;min-height:300px}
+      .photo-frame{inset:0 5px 0 12px}.floating-card{left:14px;bottom:14px;width:310px;max-width:calc(100% - 28px);padding:10px 13px}.hero-stamp{right:0;top:-12px;width:82px;height:82px}
+      .quickbar{margin-top:-18px}.quickbar-inner{grid-template-columns:1fr;padding:12px 16px;gap:5px}
+      .quick-item{padding:9px 4px}.quick-item+.quick-item{border-left:0;border-top:1px solid var(--line)}
+      section{padding:66px 0}.section-head{margin-bottom:30px}
+      .destinations{grid-template-columns:1fr 1fr;gap:12px}.destination{min-height:205px}.destination-label{left:14px;bottom:13px}.destination-label strong{font-size:17px}
+      .service-grid{grid-template-columns:1fr 1fr;gap:12px}.service-card{padding:19px 16px}
+      .process-grid{grid-template-columns:1fr;gap:13px}
+      .why-grid,.contact-grid{grid-template-columns:1fr;gap:25px}
+      .why-points{gap:10px}.why-point{padding:15px}
+      .contact-panel,.form-card{padding:24px}
+      .form-grid{grid-template-columns:1fr}.full{grid-column:auto}
+      .footer-top{align-items:flex-start;flex-direction:column}
+      .mobile-cta{display:flex;position:fixed;z-index:30;bottom:12px;left:12px;right:12px;gap:8px;padding:8px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 35px rgba(7,27,56,.18)}
+      .mobile-cta .btn{flex:1;padding:12px 10px;font-size:12px}
+      body{padding-bottom:78px}
+    }
+  </style>
+<style>
+/* GVAS hero: full-width aircraft image with a readability fade on the left */
+.hero{background:#071b38;isolation:isolate}
+.hero-grid{display:block;position:relative;min-height:565px;padding:76px 0 82px}
+.hero-content{position:relative;z-index:3;width:min(58%,650px);padding:0}
+.hero-visual{position:absolute;z-index:1;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;min-height:0;display:block;pointer-events:none}
+.photo-frame{position:absolute;inset:0;border-radius:0;box-shadow:none;background:#0b2a50}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 48%}
+.photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,27,56,.99) 0%,rgba(7,27,56,.94) 27%,rgba(7,27,56,.78) 43%,rgba(7,27,56,.34) 62%,rgba(7,27,56,.04) 82%,rgba(7,27,56,0) 100%),linear-gradient(0deg,rgba(7,27,56,.22),transparent 40%)}
+.hero-stamp{right:max(22px,calc((100vw - 1160px)/2 - 10px));top:28px}
+.floating-card{left:auto;right:max(34px,calc((100vw - 1160px)/2 + 20px));bottom:34px;pointer-events:auto}
+@media(max-width:900px){.hero-grid{min-height:540px;padding:64px 0 72px}.hero-content{width:65%}.photo-frame img{object-position:58% center}.hero-stamp{right:18px}.floating-card{right:22px}}
+@media(max-width:680px){.hero-grid{display:block;min-height:650px;padding:52px 0 230px}.hero-content{width:100%;max-width:560px}.hero-visual{position:absolute;inset:0;width:100vw;left:50%;transform:translateX(-50%)}.photo-frame{inset:0}.photo-frame img{object-position:62% center}.photo-frame:after{background:linear-gradient(90deg,rgba(7,27,56,.98) 0%,rgba(7,27,56,.90) 43%,rgba(7,27,56,.50) 72%,rgba(7,27,56,.18) 100%),linear-gradient(0deg,rgba(7,27,56,.55),transparent 55%)}.hero-stamp{right:14px;top:auto;bottom:142px;width:78px;height:78px}.floating-card{right:14px;left:auto;bottom:24px;max-width:220px}.hero .btn-outline{background:rgba(7,27,56,.24)}}
+</style></head>
+<body>
+<div class="topbar"><div class="container"><span>Personalised visa application support</span><span>✉  info@gvas-s.com</span></div></div>
+<header>
+<div class="container nav">
+<a aria-label="GVAS home" class="brand" href="#home"><img alt="GVAS — Global Visa Application Support" src="assets/gvas-logo-cropped.jpg"/></a>
+<button aria-label="Open menu" class="menu-btn" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+<nav class="navlinks">
+<a href="#home">Home</a><a href="#destinations">Destinations</a><a href="#services">Visa Services</a><a href="#process">How It Works</a><a href="#contact">Contact</a>
+<a class="btn btn-primary" href="#contact">Start an Enquiry <span>↗</span></a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div class="hero-content">
+<div class="eyebrow">Your journey starts here</div>
+<h1>The world is closer than <span>you think.</span></h1>
+<p class="hero-copy">We make visa assistance friendly and accessible. Get clear guidance, document support and personal assistance at every step of your application journey.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contact">Get Visa Assistance <span>→</span></a>
+<a class="btn btn-outline" href="#destinations">Explore Destinations</a>
+</div>
+<div class="trustline"><span><b class="check">✓</b> Personalised guidance</span><span><b class="check">✓</b> Clear documentation support</span></div>
+</div>
+<div class="hero-visual">
+<div class="photo-frame">
+<img alt="Passenger aircraft flying through a clear blue sky" src="assets/gvas-plane-sky.png"/>
+</div>
+<div class="hero-stamp"><div><b>GVAS</b>VISA · TRAVEL<br/>· BEYOND</div></div>
+<a aria-label="Go to the enquiry form" class="floating-card" href="#contact"><span class="floating-icon">✈</span><span class="floating-copy"><strong>Your next destinations awaits</strong><small>Let's take the first step together.</small></span></a>
+</div>
+</div>
+</section>
+<div class="container quickbar">
+<div class="quickbar-inner">
+<div class="quick-item"><span class="quick-icon">◎</span><div><strong>Destination-focused support</strong><small>Guidance based on where you're going</small></div></div>
+<div class="quick-item"><span class="quick-icon">▤</span><div><strong>Document guidance</strong><small>Know what to prepare before applying</small></div></div>
+<div class="quick-item"><span class="quick-icon">♡</span><div><strong>Personal attention</strong><small>Support through your application journey</small></div></div>
+</div>
+</div>
+<section id="destinations">
+<div class="container">
+<div class="section-head"><div class="section-kicker">Find your next destination</div><h2>Where would you like to go?</h2><p>Every journey begins with a destination. Tell us where you're headed and we'll help you understand the visa process.</p></div>
+<div class="destinations">
+<a class="destination" data-destination="Europe" href="#contact"><img alt="Europe" src="https://images.unsplash.com/photo-1498908314513-7e6c7f2f8a6c?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="destination-label"><strong>Europe</strong></div></a>
+<a class="destination" data-destination="China" href="#contact"><img alt="China" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="destination-label"><strong>China</strong></div></a>
+<a class="destination" data-destination="UAE" href="#contact"><img alt="UAE" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="destination-label"><strong>UAE</strong></div></a>
+<a class="destination" data-destination="Asia" href="#contact"><img alt="Asia" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="destination-label"><strong>Asia</strong></div></a>
+<a class="destination" data-destination="United States" href="#contact"><img alt="United States" src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="destination-label"><strong>United States</strong></div></a>
+</div>
+</div>
+</section>
+<section class="services" id="services">
+<div class="container">
+<div class="section-head"><div class="section-kicker">How we can help</div><h2>Visa support, made simpler.</h2><p>Practical assistance to help you prepare your visa application with greater clarity and confidence.</p></div>
+<div class="service-grid">
+<article class="service-card"><div class="service-icon">✈</div><h3>Tourist Visa</h3><p>Guidance for holidays, sightseeing and personal travel.</p></article>
+<article class="service-card"><div class="service-icon">▣</div><h3>Business Visa</h3><p>Application guidance for business trips and professional visits.</p></article>
+<article class="service-card"><div class="service-icon">♡</div><h3>Family Visit Visa</h3><p>Support for visits to family and friends overseas.</p></article>
+<article class="service-card"><div class="service-icon">✓</div><h3>Document Assistance</h3><p>Help understanding document requirements and application steps.</p></article>
+<article class="service-card"><div class="service-icon">⌂</div><h3>Permanent Residency (PR)</h3><p>Guidance and administrative assistance for PR application processes, where offered.</p></article>
+</div>
+</div>
+</section>
+<section id="process">
+<div class="container">
+<div class="section-head"><div class="section-kicker">A clear way forward</div><h2>Three steps to get started.</h2><p>Simple, personal and focused on helping you understand what comes next.</p></div>
+<div class="process-grid">
+<article class="process-card"><div class="process-number">01</div><h3>Tell us your plans</h3><p>Share your destination, travel purpose and tentative travel dates.</p></article>
+<article class="process-card"><div class="process-number">02</div><h3>Understand the requirements</h3><p>We help you understand the relevant application steps and document checklist.</p></article>
+<article class="process-card"><div class="process-number">03</div><h3>Prepare your application</h3><p>Move ahead with organised documentation and guidance through the process.</p></article>
+</div>
+</div>
+</section>
+<section class="why">
+<div class="container why-grid">
+<div><div class="eyebrow">The GVAS approach</div><h2>Clear guidance. Personal attention. A smoother journey.</h2><p class="why-copy">Visa applications can feel complicated. Our aim is to make the process easier to understand, help you prepare carefully and keep you informed about the next steps.</p><a class="btn btn-primary" href="#contact">Speak with GVAS ↗</a></div>
+<div class="why-points">
+<div class="why-point"><i>◎</i><b>Personalised support</b><span>Guidance shaped around your travel purpose.</span></div>
+<div class="why-point"><i>▤</i><b>Clear checklists</b><span>Understand the documents you may need.</span></div>
+<div class="why-point"><i>↗</i><b>Step-by-step process</b><span>Know what to expect at each stage.</span></div>
+<div class="why-point"><i>♡</i><b>Human assistance</b><span>Talk to a team member when you need help.</span></div>
+</div>
+</div>
+</section>
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-head"><div class="section-kicker">Let's talk about your trip</div><h2>Your journey starts with a conversation.</h2><p>Send us your details and tell us where you would like to go. We'll get back to you.</p></div>
+<div class="contact-grid">
+<div class="contact-panel"><div class="eyebrow">Get in touch</div><h2>We're here to help you take the next step.</h2><p>Have a question about a visa application? Send us an enquiry or email our team.</p>
+<div class="contact-detail"><span>✉</span><div><small>Email us</small><br/><strong>info@gvas-s.com</strong></div></div>
+<div class="contact-detail"><span>☎</span><div><small>Call us</small><br/><strong>Phone number to be added</strong></div></div>
+<div class="contact-detail"><span>◉</span><div><small>WhatsApp</small><br/><strong>WhatsApp number to be added</strong></div></div>
+</div>
+<form class="form-card" id="enquiryForm">
+<h3>Send an enquiry</h3><p>Fill in the details below. Your email app will open with your enquiry ready to send.</p>
+<div class="form-grid">
+<div><label for="name">Full name *</label><input id="name" name="name" placeholder="Your name" required=""/></div>
+<div><label for="phone">Mobile number *</label><input id="phone" name="phone" placeholder="+91" required="" type="tel"/></div>
+<div><label for="email">Email address *</label><input id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
+<div><label for="destination">Destination *</label><input id="destination" name="destination" placeholder="Where would you like to go?" required=""/></div>
+<div><label for="purpose">Travel purpose</label><select id="purpose" name="purpose"><option>Tourism / Holiday</option><option>Business</option><option>Family visit</option><option>PR – Permanent Residency</option><option>Other</option></select></div>
+<div><label for="date">Tentative travel date</label><input id="date" name="date" type="date"/></div>
+<div class="full"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us a little about your visa requirement..."></textarea></div>
+<div class="full"><button class="btn btn-primary" style="width:100%" type="submit">Prepare My Enquiry <span>→</span></button><div class="form-note">Submitting opens your email app. No information is stored on this website.</div></div>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<div class="footer-top">
+<div class="footer-brand"><img alt="GVAS logo" src="assets/gvas-logo-cropped.jpg"/><div><strong style="color:white;letter-spacing:.08em">GVAS</strong><small>Global Visa Application Support</small></div></div>
+<div class="footer-links"><a href="#home">Home</a><a href="#services">Visa Services</a><a href="#destinations">Destinations</a><a href="#contact">Contact</a><a href="mailto:info@gvas-s.com">Email us</a><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a><a href="refunds.html">Refund &amp; Cancellation</a><a href="disclaimer.html">Disclaimer</a><a href="cookies.html">Cookie Policy</a></div>
+</div>
+<div class="footer-bottom"><span>© <span id="year"></span> GVAS. All rights reserved.</span><span>Visa guidance and application support. Visa decisions are made by the relevant authorities.</span></div>
+</div>
+</footer>
+<div class="mobile-cta"><a class="btn btn-dark" href="mailto:info@gvas-s.com?subject=GVAS%20Visa%20Enquiry">Email GVAS</a><a class="btn btn-primary" href="#contact">Make an Enquiry</a></div>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('[data-destination]').forEach(card => {
+      card.addEventListener('click', () => {
+        const field = document.getElementById('destination');
+        if (field) field.value = card.dataset.destination;
+      });
+    });
+    document.getElementById('enquiryForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const d = new FormData(this);
+      const subject = encodeURIComponent('GVAS Visa Enquiry — ' + d.get('destination'));
+      const body = encodeURIComponent(
+        'Name: ' + d.get('name') + '\\n' +
+        'Mobile: ' + d.get('phone') + '\\n' +
+        'Email: ' + d.get('email') + '\\n' +
+        'Destination: ' + d.get('destination') + '\\n' +
+        'Purpose: ' + d.get('purpose') + '\\n' +
+        'Travel date: ' + (d.get('date') || 'Not specified') + '\\n\\n' +
+        'Message: ' + (d.get('message') || 'Not specified')
+      );
+      window.location.href = 'mailto:info@gvas-s.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
