@@ -163,6 +163,22 @@
       .mobile-cta .btn{flex:1;padding:12px 10px;font-size:12px}
       body{padding-bottom:78px}
     }
+
+    .language-switch{display:flex;justify-content:center;gap:6px;margin:-18px auto 34px}
+    .language-switch button{border:1px solid #cbd8e5;background:#fff;color:var(--navy);border-radius:999px;padding:8px 18px;font-weight:750;font-size:13px;cursor:pointer}
+    .language-switch button.active{background:var(--navy);border-color:var(--navy);color:#fff}
+    .bilingual[hidden]{display:none!important}
+    .documents{background:#fff}
+    .document-card{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+    .document-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin:20px 0}
+    .document-item{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:14px}
+    .document-item:before{content:'✓';color:#078aca;font-weight:900}
+    .document-note{background:#f5f8fb;border-radius:12px;padding:14px 16px;color:var(--muted);font-size:12px;line-height:1.7}
+    .document-cta{margin-top:22px;padding:22px;background:var(--navy);border-radius:16px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .document-cta h3{margin:0 0 5px;color:#fff;font-size:19px}
+    .document-cta p{margin:0;color:#d0dbea;font-size:13px;max-width:570px}
+    .document-cta .btn{white-space:nowrap}
+    @media(max-width:680px){.document-card{padding:20px}.document-grid{grid-template-columns:1fr;gap:11px}.document-cta{align-items:flex-start;flex-direction:column}}
   </style>
 <style>
 /* GVAS hero: full-width aircraft image with a readability fade on the left */
@@ -177,6 +193,19 @@
 .floating-card{left:auto;right:max(34px,calc((100vw - 1160px)/2 + 20px));bottom:34px;pointer-events:auto}
 @media(max-width:900px){.hero-grid{min-height:540px;padding:64px 0 72px}.hero-content{width:65%}.photo-frame img{object-position:58% center}.hero-stamp{right:18px}.floating-card{right:22px}}
 @media(max-width:680px){.hero-grid{display:block;min-height:650px;padding:52px 0 230px}.hero-content{width:100%;max-width:560px}.hero-visual{position:absolute;inset:0;width:100vw;left:50%;transform:translateX(-50%)}.photo-frame{inset:0}.photo-frame img{object-position:62% center}.photo-frame:after{background:linear-gradient(90deg,rgba(7,27,56,.98) 0%,rgba(7,27,56,.90) 43%,rgba(7,27,56,.50) 72%,rgba(7,27,56,.18) 100%),linear-gradient(0deg,rgba(7,27,56,.55),transparent 55%)}.hero-stamp{right:14px;top:auto;bottom:142px;width:78px;height:78px}.floating-card{right:14px;left:auto;bottom:24px;max-width:220px}.hero .btn-outline{background:rgba(7,27,56,.24)}}
+
+/* Frequently asked questions */
+.faqs{background:var(--soft)}
+.faq-list{max-width:900px;margin:0 auto;display:grid;gap:12px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 22px;box-shadow:0 5px 18px rgba(7,27,56,.035)}
+.faq-item summary{position:relative;cursor:pointer;list-style:none;padding:19px 34px 19px 0;color:var(--navy);font-weight:750}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:24px;font-weight:400;color:var(--red)}
+.faq-item[open] summary:after{content:'−'}
+.faq-item p{margin:0;padding:0 0 20px;color:var(--muted);font-size:14px;line-height:1.8;max-width:800px}
+.faq-cta{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:30px}
+.faq-cta p{margin:0;color:var(--ink);font-weight:650}
+@media(max-width:680px){.faq-item{padding:0 16px}.faq-item summary{font-size:14px;padding:17px 30px 17px 0}.faq-item p{font-size:13px}.faq-cta{flex-direction:column;gap:12px}}
 </style></head>
 <body>
 <div class="topbar"><div class="container"><span>Personalised visa application support</span><span>✉  info@gvas-s.com</span></div></div>
@@ -185,7 +214,7 @@
 <a aria-label="GVAS home" class="brand" href="#home"><img alt="GVAS — Global Visa Application Support" src="gvas-logo-cropped.jpg"/></a>
 <button aria-label="Open menu" class="menu-btn" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
 <nav class="navlinks">
-<a href="#home">Home</a><a href="#destinations">Destinations</a><a href="#services">Visa Services</a><a href="#process">How It Works</a><a href="#contact">Contact</a>
+<a href="#home">Home</a><a href="#destinations">Destinations</a><a href="#services">Visa Services</a><a href="#process">How It Works</a><a href="#documents">Documents</a><a href="#faqs">FAQs</a><a href="#contact">Contact</a>
 <a class="btn btn-primary" href="#contact">Start an Enquiry <span>↗</span></a>
 </nav>
 </div>
@@ -267,6 +296,77 @@
 </div>
 </div>
 </section>
+<section class="documents" id="documents">
+<div class="container">
+<div class="section-head bilingual" data-lang-content="en"><div class="section-kicker">Prepare with confidence</div><h2>Common visa document checklist.</h2><p>A helpful starting point for preparing your visa application documents.</p></div>
+<div class="section-head bilingual" data-lang-content="hi" hidden><div class="section-kicker">पूरी तैयारी के साथ आगे बढ़ें</div><h2>वीज़ा के लिए सामान्य दस्तावेज़ चेकलिस्ट।</h2><p>वीज़ा आवेदन के दस्तावेज़ तैयार करने के लिए एक उपयोगी शुरुआती सूची।</p></div>
+<div class="language-switch" role="group" aria-label="Choose language"><button type="button" class="active" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="hi" aria-pressed="false">हिंदी</button></div>
+<div class="document-card">
+<div class="bilingual" data-lang-content="en">
+<p>While the exact requirements depend on your destination, visa category and personal circumstances, the following documents are commonly requested:</p>
+<div class="document-grid">
+<div class="document-item">Valid passport</div><div class="document-item">Recent passport-size photographs</div>
+<div class="document-item">Completed visa application form</div><div class="document-item">Identity and address proof</div>
+<div class="document-item">Recent bank statements and proof of funds</div><div class="document-item">Employment, salary or business documents, where applicable</div>
+<div class="document-item">Income tax returns, where applicable</div><div class="document-item">Flight itinerary or travel reservations</div>
+<div class="document-item">Hotel booking or accommodation details</div><div class="document-item">Travel medical insurance, where applicable</div>
+<div class="document-item">Invitation letter, if applicable</div><div class="document-item">Documents supporting your purpose of travel</div>
+</div>
+<div class="document-note"><strong>Please note:</strong> This is a general reference checklist, not a final or country-specific list. Additional documents may be required, and some items may not apply to your case. Always follow the latest instructions issued by the relevant embassy, consulate or immigration authority.</div>
+<div class="document-cta"><div><h3>Need help with your visa documentation?</h3><p>Every application is different. Schedule a call with GVAS for personalised information and support with your next steps.</p></div><a class="btn btn-primary" href="#contact">Schedule a Call ↗</a></div>
+</div>
+<div class="bilingual" data-lang-content="hi" hidden>
+<p>सटीक दस्तावेज़ आपकी यात्रा के गंतव्य, वीज़ा श्रेणी और व्यक्तिगत परिस्थितियों पर निर्भर करते हैं। आमतौर पर निम्नलिखित दस्तावेज़ मांगे जा सकते हैं:</p>
+<div class="document-grid">
+<div class="document-item">वैध पासपोर्ट</div><div class="document-item">हाल की पासपोर्ट साइज़ फोटो</div>
+<div class="document-item">पूरा भरा हुआ वीज़ा आवेदन फॉर्म</div><div class="document-item">पहचान और पते का प्रमाण</div>
+<div class="document-item">हाल के बैंक स्टेटमेंट और वित्तीय क्षमता का प्रमाण</div><div class="document-item">नौकरी, वेतन या व्यवसाय से जुड़े दस्तावेज़, जहाँ लागू हों</div>
+<div class="document-item">आयकर रिटर्न, जहाँ लागू हों</div><div class="document-item">फ्लाइट यात्रा कार्यक्रम या यात्रा आरक्षण</div>
+<div class="document-item">होटल बुकिंग या रहने की व्यवस्था का विवरण</div><div class="document-item">यात्रा चिकित्सा बीमा, जहाँ आवश्यक हो</div>
+<div class="document-item">निमंत्रण पत्र, यदि लागू हो</div><div class="document-item">यात्रा के उद्देश्य से जुड़े सहायक दस्तावेज़</div>
+</div>
+<div class="document-note"><strong>कृपया ध्यान दें:</strong> यह केवल सामान्य जानकारी के लिए एक प्रारंभिक सूची है, अंतिम या किसी विशेष देश की दस्तावेज़ सूची नहीं। आपके मामले में अतिरिक्त दस्तावेज़ मांगे जा सकते हैं और कुछ दस्तावेज़ लागू नहीं भी हो सकते। संबंधित दूतावास, वाणिज्य दूतावास या इमिग्रेशन प्राधिकरण के नवीनतम निर्देशों का पालन करें।</div>
+<div class="document-cta"><div><h3>वीज़ा दस्तावेज़ों में सहायता चाहिए?</h3><p>हर आवेदन अलग होता है। व्यक्तिगत जानकारी और आगे की प्रक्रिया में सहायता के लिए GVAS के साथ कॉल शेड्यूल करें।</p></div><a class="btn btn-primary" href="#contact">कॉल शेड्यूल करें ↗</a></div>
+</div>
+</div>
+</div>
+</section>
+<section class="faqs" id="faqs">
+<div class="container">
+<div class="section-head bilingual" data-lang-content="en"><div class="section-kicker">A little clarity before you begin</div><h2>Frequently asked questions.</h2><p>Helpful answers to common questions about visa applications and the support GVAS provides.</p></div>
+<div class="section-head bilingual" data-lang-content="hi" hidden><div class="section-kicker">शुरू करने से पहले कुछ ज़रूरी जानकारी</div><h2>अक्सर पूछे जाने वाले सवाल।</h2><p>वीज़ा आवेदन और GVAS की सहायता से जुड़े सामान्य सवालों के आसान जवाब।</p></div>
+<div class="faq-list bilingual" data-lang-content="en">
+<details class="faq-item"><summary>What kind of visa assistance does GVAS provide?</summary><p>GVAS provides guidance and application support, which may include understanding the process, preparing document checklists and organising application information. The exact support available depends on the destination and visa category.</p></details>
+<details class="faq-item"><summary>Which countries can GVAS help me apply to?</summary><p>Our website groups destinations into Europe, China, Middle East, Asia and the United States. Support availability and visa requirements vary by country. Contact us with your destination and travel purpose so we can confirm how we can assist.</p></details>
+<details class="faq-item"><summary>What documents do I need for a visa application?</summary><p>Requirements depend on the destination, visa type and your individual circumstances. Common documents may include a valid passport, photographs, travel details, proof of funds, accommodation information and supporting documents relevant to your purpose of travel. We can help you understand the applicable checklist.</p></details>
+<details class="faq-item"><summary>How early should I apply for my visa?</summary><p>Apply as early as the relevant authority allows. Processing times and appointment availability can change, so check the latest official guidance for your destination and avoid making non-refundable travel plans until you understand the visa conditions.</p></details>
+<details class="faq-item"><summary>How long does visa processing take?</summary><p>There is no single processing time for all applications. It depends on the country, visa category, season, appointment availability and the reviewing authority. GVAS can help you understand the published guidance, but the final timeline is controlled by the relevant authority.</p></details>
+<details class="faq-item"><summary>Can GVAS guarantee that my visa will be approved?</summary><p>No. Visa decisions are made solely by the relevant embassy, consulate or immigration authority. GVAS cannot guarantee approval, a particular decision or a processing time. Our role is to provide support with preparation and understanding the application process.</p></details>
+<details class="faq-item"><summary>Can you help if my visa application was refused?</summary><p>We can help you understand the refusal communication and discuss possible next steps, where that support is available. Whether you can reapply, appeal or request a review depends on the destination and the reason for refusal. A successful outcome cannot be guaranteed.</p></details>
+<details class="faq-item"><summary>Do you assist with student visas, business visas and family visits?</summary><p>Support depends on the destination and the type of application. Tell us your travel or study purpose and destination, and we will confirm whether the relevant service is available.</p></details>
+<details class="faq-item"><summary>Does GVAS also help with Permanent Residency (PR)?</summary><p>We list Permanent Residency (PR) guidance as a service. The scope of assistance depends on the country and programme. GVAS does not make immigration decisions or replace advice from a licensed immigration professional where one is required.</p></details>
+<details class="faq-item"><summary>Will I need to attend an appointment or provide biometrics?</summary><p>Some applications require an in-person appointment, fingerprints, a photograph or an interview. These requirements are set by the relevant authority. We can help you understand the instructions provided for your application.</p></details>
+<details class="faq-item"><summary>How much does a visa application cost?</summary><p>Costs vary by destination and visa category. You may need to pay official application, appointment or biometric fees, as well as any separate GVAS service fee confirmed before you proceed. Official fees are set by the relevant authorities and may change.</p></details>
+<details class="faq-item"><summary>How do I get started with GVAS?</summary><p>Complete the enquiry form with your destination, country, travel purpose and preferred callback time. Our team can then contact you to understand your requirement and explain the next steps.</p></details>
+</div>
+<div class="faq-list bilingual" data-lang-content="hi" hidden>
+<details class="faq-item"><summary>GVAS किस प्रकार की वीज़ा सहायता प्रदान करता है?</summary><p>GVAS वीज़ा प्रक्रिया को समझने, दस्तावेज़ों की चेकलिस्ट तैयार करने और आवेदन से जुड़ी जानकारी व्यवस्थित करने में मार्गदर्शन और सहायता प्रदान करता है। उपलब्ध सहायता गंतव्य देश और वीज़ा श्रेणी पर निर्भर करती है।</p></details>
+<details class="faq-item"><summary>GVAS किन देशों के लिए आवेदन में सहायता कर सकता है?</summary><p>हमारी वेबसाइट पर गंतव्यों को यूरोप, चीन, मध्य पूर्व, एशिया और संयुक्त राज्य अमेरिका में बांटा गया है। सहायता की उपलब्धता और वीज़ा आवश्यकताएँ देश के अनुसार अलग-अलग होती हैं। अपने गंतव्य और यात्रा के उद्देश्य के साथ हमसे संपर्क करें।</p></details>
+<details class="faq-item"><summary>वीज़ा आवेदन के लिए कौन से दस्तावेज़ चाहिए?</summary><p>आवश्यकताएँ गंतव्य देश, वीज़ा के प्रकार और आपकी व्यक्तिगत परिस्थितियों पर निर्भर करती हैं। आम दस्तावेज़ों में वैध पासपोर्ट, फोटो, यात्रा विवरण, वित्तीय प्रमाण, रहने की व्यवस्था का विवरण और यात्रा के उद्देश्य से जुड़े दस्तावेज़ शामिल हो सकते हैं।</p></details>
+<details class="faq-item"><summary>मुझे वीज़ा के लिए कितनी जल्दी आवेदन करना चाहिए?</summary><p>संबंधित प्राधिकरण द्वारा अनुमति मिलने पर यथासंभव जल्दी आवेदन करें। प्रोसेसिंग समय और अपॉइंटमेंट की उपलब्धता बदल सकती है। गैर-वापसी योग्य यात्रा बुकिंग करने से पहले अपने गंतव्य के नवीनतम आधिकारिक निर्देश अवश्य देखें।</p></details>
+<details class="faq-item"><summary>वीज़ा प्रक्रिया में कितना समय लगता है?</summary><p>सभी आवेदनों के लिए एक समान समय-सीमा नहीं होती। यह देश, वीज़ा श्रेणी, मौसम, अपॉइंटमेंट की उपलब्धता और आवेदन की समीक्षा करने वाले प्राधिकरण पर निर्भर करता है। अंतिम समय-सीमा संबंधित प्राधिकरण तय करता है।</p></details>
+<details class="faq-item"><summary>क्या GVAS वीज़ा स्वीकृति की गारंटी देता है?</summary><p>नहीं। वीज़ा का निर्णय संबंधित दूतावास, वाणिज्य दूतावास या इमिग्रेशन प्राधिकरण ही लेता है। GVAS स्वीकृति, किसी विशेष निर्णय या प्रोसेसिंग समय की गारंटी नहीं देता। हमारी भूमिका आवेदन की तैयारी और प्रक्रिया को समझने में सहायता करना है।</p></details>
+<details class="faq-item"><summary>यदि मेरा वीज़ा आवेदन अस्वीकार हो गया है, तो क्या आप सहायता कर सकते हैं?</summary><p>जहाँ हमारी सेवा उपलब्ध है, वहाँ हम अस्वीकृति पत्र को समझने और संभावित अगले कदमों पर चर्चा करने में मदद कर सकते हैं। दोबारा आवेदन, अपील या समीक्षा का विकल्प देश और अस्वीकृति के कारण पर निर्भर करता है। सफलता की गारंटी नहीं दी जा सकती।</p></details>
+<details class="faq-item"><summary>क्या आप स्टूडेंट, बिज़नेस और परिवार से मिलने के वीज़ा में सहायता करते हैं?</summary><p>सहायता गंतव्य देश और आवेदन के प्रकार पर निर्भर करती है। अपनी यात्रा या पढ़ाई का उद्देश्य और गंतव्य बताएं, ताकि हम उपलब्ध सेवा की पुष्टि कर सकें।</p></details>
+<details class="faq-item"><summary>क्या GVAS स्थायी निवास (PR) में भी सहायता करता है?</summary><p>हम स्थायी निवास (PR) से संबंधित मार्गदर्शन को अपनी सेवाओं में शामिल करते हैं। सहायता का दायरा देश और कार्यक्रम पर निर्भर करता है। GVAS इमिग्रेशन निर्णय नहीं लेता और जहाँ आवश्यक हो, लाइसेंस प्राप्त इमिग्रेशन विशेषज्ञ की सलाह का विकल्प नहीं है।</p></details>
+<details class="faq-item"><summary>क्या मुझे अपॉइंटमेंट या बायोमेट्रिक्स के लिए जाना होगा?</summary><p>कुछ आवेदनों में व्यक्तिगत अपॉइंटमेंट, उंगलियों के निशान, फोटो या इंटरव्यू आवश्यक हो सकते हैं। ये आवश्यकताएँ संबंधित प्राधिकरण तय करता है। हम आपको आवेदन के निर्देश समझने में मदद कर सकते हैं।</p></details>
+<details class="faq-item"><summary>वीज़ा आवेदन की लागत कितनी होती है?</summary><p>लागत गंतव्य देश और वीज़ा श्रेणी के अनुसार अलग-अलग होती है। आधिकारिक आवेदन, अपॉइंटमेंट या बायोमेट्रिक शुल्क के साथ GVAS की अलग सेवा फीस भी हो सकती है, जिसकी जानकारी आगे बढ़ने से पहले दी जाएगी। आधिकारिक शुल्क बदल सकते हैं।</p></details>
+<details class="faq-item"><summary>GVAS के साथ प्रक्रिया कैसे शुरू करें?</summary><p>अपने गंतव्य, देश, यात्रा के उद्देश्य और कॉल बैक के पसंदीदा समय के साथ enquiry form भरें। हमारी टीम आपकी आवश्यकता समझने और अगले कदम बताने के लिए आपसे संपर्क कर सकती है।</p></details>
+</div>
+<div class="faq-cta bilingual" data-lang-content="en"><p>Still have a question? We're happy to help.</p><a class="btn btn-primary" href="#contact">Ask GVAS ↗</a></div>
+<div class="faq-cta bilingual" data-lang-content="hi" hidden><p>क्या आपका कोई सवाल है? हमें आपकी मदद करके खुशी होगी।</p><a class="btn btn-primary" href="#contact">GVAS से पूछें ↗</a></div>
+</div>
+</section>
 <section class="contact" id="contact">
 <div class="container">
 <div class="section-head"><div class="section-kicker">Let's talk about your trip</div><h2>Your journey starts with a conversation.</h2><p>Send us your details and tell us where you would like to go. We'll get back to you.</p></div>
@@ -302,7 +402,7 @@
 <div class="container">
 <div class="footer-top">
 <div class="footer-brand"><img alt="GVAS logo" src="gvas-logo-cropped.jpg"/><div><strong style="color:white;letter-spacing:.08em">GVAS</strong><small>Global Visa Application Support</small></div></div>
-<div class="footer-links"><a href="#home">Home</a><a href="#services">Visa Services</a><a href="#destinations">Destinations</a><a href="#contact">Contact</a><a href="mailto:info@gvas-s.com">Email us</a><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a><a href="refunds.html">Refund &amp; Cancellation</a><a href="disclaimer.html">Disclaimer</a><a href="cookies.html">Cookie Policy</a></div>
+<div class="footer-links"><a href="#home">Home</a><a href="#services">Visa Services</a><a href="#destinations">Destinations</a><a href="#documents">Documents</a><a href="#faqs">FAQs</a><a href="#contact">Contact</a><a href="mailto:info@gvas-s.com">Email us</a><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a><a href="refunds.html">Refund &amp; Cancellation</a><a href="disclaimer.html">Disclaimer</a><a href="cookies.html">Cookie Policy</a></div>
 </div>
 <div class="footer-bottom"><span>© <span id="year"></span> GVAS. All rights reserved.</span><span>Visa guidance and application support. Visa decisions are made by the relevant authorities.</span></div>
 </div>
@@ -310,6 +410,23 @@
 <div class="mobile-cta"><a class="btn btn-dark" href="mailto:info@gvas-s.com?subject=GVAS%20Visa%20Enquiry">Email GVAS</a><a class="btn btn-primary" href="#contact">Make an Enquiry</a></div>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // English/Hindi selector for the document checklist, FAQs and their call-to-action.
+    document.querySelectorAll('[data-language]').forEach(button => {
+      button.addEventListener('click', () => {
+        const language = button.dataset.language;
+        document.querySelectorAll('[data-language]').forEach(item => {
+          const active = item.dataset.language === language;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('[data-lang-content]').forEach(panel => {
+          panel.hidden = panel.dataset.langContent !== language;
+        });
+        document.documentElement.lang = language === 'hi' ? 'hi' : 'en';
+      });
+    });
+
 
     const countriesByRegion = {
       Europe: [
