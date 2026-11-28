@@ -167,6 +167,11 @@
     .language-switch{display:flex;justify-content:center;gap:6px;margin:-18px auto 34px}
     .language-switch button{border:1px solid #cbd8e5;background:#fff;color:var(--navy);border-radius:999px;padding:8px 18px;font-weight:750;font-size:13px;cursor:pointer}
     .language-switch button.active{background:var(--navy);border-color:var(--navy);color:#fff}
+    .topbar .container{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-language{margin:0;justify-content:flex-end;flex-shrink:0}
+.topbar-language button{padding:5px 12px;font-size:12px;border-color:rgba(255,255,255,.55);background:transparent;color:#fff}
+.topbar-language button.active{background:#fff;border-color:#fff;color:var(--navy)}
+@media(max-width:680px){.topbar .container{justify-content:center;gap:8px 14px}.topbar-language{width:100%;justify-content:center}}
     .bilingual[hidden]{display:none!important}
     .documents{background:#fff}
     .document-card{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
@@ -189,10 +194,10 @@
 .photo-frame{position:absolute;inset:0;border-radius:0;box-shadow:none;background:#0b2a50}
 .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 48%}
 .photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,27,56,.99) 0%,rgba(7,27,56,.94) 27%,rgba(7,27,56,.78) 43%,rgba(7,27,56,.34) 62%,rgba(7,27,56,.04) 82%,rgba(7,27,56,0) 100%),linear-gradient(0deg,rgba(7,27,56,.22),transparent 40%)}
-.hero-stamp{right:max(22px,calc((100vw - 1160px)/2 - 10px));top:28px}
+.hero-stamp{right:max(8px,calc((100vw - 1160px)/2 - 42px));top:10px}
 .floating-card{left:auto;right:max(34px,calc((100vw - 1160px)/2 + 20px));bottom:34px;pointer-events:auto}
-@media(max-width:900px){.hero-grid{min-height:540px;padding:64px 0 72px}.hero-content{width:65%}.photo-frame img{object-position:58% center}.hero-stamp{right:18px}.floating-card{right:22px}}
-@media(max-width:680px){.hero-grid{display:block;min-height:650px;padding:52px 0 230px}.hero-content{width:100%;max-width:560px}.hero-visual{position:absolute;inset:0;width:100vw;left:50%;transform:translateX(-50%)}.photo-frame{inset:0}.photo-frame img{object-position:62% center}.photo-frame:after{background:linear-gradient(90deg,rgba(7,27,56,.98) 0%,rgba(7,27,56,.90) 43%,rgba(7,27,56,.50) 72%,rgba(7,27,56,.18) 100%),linear-gradient(0deg,rgba(7,27,56,.55),transparent 55%)}.hero-stamp{right:14px;top:auto;bottom:142px;width:78px;height:78px}.floating-card{right:14px;left:auto;bottom:24px;max-width:220px}.hero .btn-outline{background:rgba(7,27,56,.24)}}
+@media(max-width:900px){.hero-grid{min-height:540px;padding:64px 0 72px}.hero-content{width:65%}.photo-frame img{object-position:58% center}.hero-stamp{right:8px;top:10px}.floating-card{right:22px}}
+@media(max-width:680px){.hero-grid{display:block;min-height:650px;padding:52px 0 230px}.hero-content{width:100%;max-width:560px}.hero-visual{position:absolute;inset:0;width:100vw;left:50%;transform:translateX(-50%)}.photo-frame{inset:0}.photo-frame img{object-position:62% center}.photo-frame:after{background:linear-gradient(90deg,rgba(7,27,56,.98) 0%,rgba(7,27,56,.90) 43%,rgba(7,27,56,.50) 72%,rgba(7,27,56,.18) 100%),linear-gradient(0deg,rgba(7,27,56,.55),transparent 55%)}.hero-stamp{right:8px;top:auto;bottom:155px;width:78px;height:78px}.floating-card{right:14px;left:auto;bottom:24px;max-width:220px}.hero .btn-outline{background:rgba(7,27,56,.24)}}
 
 /* Frequently asked questions */
 .faqs{background:var(--soft)}
@@ -207,8 +212,7 @@
 .faq-cta p{margin:0;color:var(--ink);font-weight:650}
 @media(max-width:680px){.faq-item{padding:0 16px}.faq-item summary{font-size:14px;padding:17px 30px 17px 0}.faq-item p{font-size:13px}.faq-cta{flex-direction:column;gap:12px}}
 </style></head>
-<body>
-<div class="topbar"><div class="container"><span>Personalised visa application support</span><span>✉  info@gvas-s.com</span></div></div>
+<body><div class="topbar"><div class="container"><span>Personalised visa application support</span><span>✉  info@gvas-s.com</span><div class="language-switch topbar-language" role="group" aria-label="Choose language"><button type="button" class="active" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="hi" aria-pressed="false">हिंदी</button></div></div></div>
 <header>
 <div class="container nav">
 <a aria-label="GVAS home" class="brand" href="#home"><img alt="GVAS — Global Visa Application Support" src="gvas-logo-cropped.jpg"/></a>
@@ -300,7 +304,6 @@
 <div class="container">
 <div class="section-head bilingual" data-lang-content="en"><div class="section-kicker">Prepare with confidence</div><h2>Common visa document checklist.</h2><p>A helpful starting point for preparing your visa application documents.</p></div>
 <div class="section-head bilingual" data-lang-content="hi" hidden><div class="section-kicker">पूरी तैयारी के साथ आगे बढ़ें</div><h2>वीज़ा के लिए सामान्य दस्तावेज़ चेकलिस्ट।</h2><p>वीज़ा आवेदन के दस्तावेज़ तैयार करने के लिए एक उपयोगी शुरुआती सूची।</p></div>
-<div class="language-switch" role="group" aria-label="Choose language"><button type="button" class="active" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="hi" aria-pressed="false">हिंदी</button></div>
 <div class="document-card">
 <div class="bilingual" data-lang-content="en">
 <p>While the exact requirements depend on your destination, visa category and personal circumstances, the following documents are commonly requested:</p>
